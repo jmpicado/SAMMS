@@ -1,0 +1,9 @@
+@import "addons.scss";
+@import "samms.scss";
+
+/* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
+/* The actual styles should be defined in samms.scss */
+.samms {
+  @include addons;
+  @include samms;
+}
