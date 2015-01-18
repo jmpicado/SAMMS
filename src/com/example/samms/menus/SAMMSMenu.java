@@ -1,44 +1,92 @@
 package com.example.samms.menus;
 
+import java.io.Serializable;
+
+import com.example.samms.windows.WindowsIndex;
+import com.example.samms.windows.WindowsMarketsIntermediarios;
 import com.vaadin.ui.AbsoluteLayout;
-import com.vaadin.ui.Label;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.MenuBar.MenuItem;
+import com.vaadin.ui.TabSheet;
+import com.vaadin.ui.UI;
 
-public class SAMMSMenu {
+public class SAMMSMenu implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public Component _lastComponent = null;
 	
-	public static void createTreeContent(MenuBar barmenu, AbsoluteLayout layout ) {
-		layout.addComponent(barmenu, "top:10.0px;left:37.0px;");
-		barmenu.setWidth("583px");
-		        
+	public class SAMMSComand implements MenuBar.Command{
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		
+		TabSheet _tabsheet;
+		SAMMSMenu _menu;
+		
+		public SAMMSComand(TabSheet tabsheet, SAMMSMenu menu) {
+			super();
+			_tabsheet = tabsheet;_menu=menu;
+		}
+
+		@Override
+		public void menuSelected(MenuItem selectedItem) {
+			
+			if (_lastComponent!=null)
+				_menu._mainLayout.removeComponent(_lastComponent);
+			_lastComponent = _tabsheet;
+			_mainLayout.addComponent(_lastComponent,"top:50.0px;left:300.0px;");
+			
+		}
+		
+		
+	};
+	
+	AbsoluteLayout _mainLayout;
+	
+	public void createTreeContent(MenuBar barmenu, TabSheet tabsheet1, TabSheet tabsheet2, 
+			
+										AbsoluteLayout mainLayout ) {
+
+		_mainLayout = mainLayout;
 		// A feedback component
-		final Label selection = new Label("-");
-		layout.addComponent(selection);
+//		final Label selection = new Label("-");
+//		tabsheet.addComponent(selection);
 	
 		// Define a common menu command for all the menu items
-		MenuBar.Command mycommand = new MenuBar.Command() {
-		    MenuItem previous = null;
-	
-		    public void menuSelected(MenuItem selectedItem) {
-//		        selection.setValue("Ordered a " +
-//		                selectedItem.getText() +
-//		                " from menu.");
-//	
-//		        if (previous != null)
-//		            previous.setStyleName(null);
-//		        selectedItem.setStyleName("highlight");
-//		        previous = selectedItem;
-		    }  
+		MenuBar.Command mycommand1 = new SAMMSComand(tabsheet1,this);
+		MenuBar.Command mycommand2 = new SAMMSComand(tabsheet2,this);
+		MenuBar.Command mycommand3 = new MenuBar.Command() {
+			public void menuSelected(MenuItem selectedItem) {
+				WindowsIndex sub = new WindowsIndex(null);
+		    	// Add it to the root component
+		    	UI.getCurrent().addWindow(sub); 
+				
+			}
+		};
+		MenuBar.Command mycommand4 = new MenuBar.Command() {
+			public void menuSelected(MenuItem selectedItem) {
+				WindowsMarketsIntermediarios sub = new WindowsMarketsIntermediarios(null);
+		    	// Add it to the root component
+		    	UI.getCurrent().addWindow(sub); 
+				
+			}
 		};
 		        
-		// Put some items in the menu
-		MenuItem drinks = barmenu.addItem("Issuers", null, null);
+		//Items on the Menu
+		MenuItem persons = barmenu.addItem("Persons", null, null);
 		// Submenu item with a sub-submenu
-		MenuItem hots = drinks.addItem("Hot", null, mycommand);
-		//hots.addItem("Tea",new ThemeResource("icons/tea-16px.ico"),    mycommand);
-		//hots.addItem("Coffee",new ThemeResource("icons/coffee-16px.ico"), mycommand);
+		MenuItem conseilhors = persons.addItem("Issuers/Intermediaries..", null, mycommand2);
+		MenuItem issuers = persons.addItem("Conseillors..", null, mycommand1);
 		
-		barmenu.addItem("Insiders", null, mycommand);
-		barmenu.addItem("Persons", null, mycommand);
+		MenuItem indexes = barmenu.addItem("Indexes", null, null);
+		MenuItem indexesSM = indexes.addItem("General", null, mycommand3);
+		
+		MenuItem markets = barmenu.addItem("Markets", null, null);
+		MenuItem marketsSM = markets.addItem("General", null, mycommand4);
 	}
 }
