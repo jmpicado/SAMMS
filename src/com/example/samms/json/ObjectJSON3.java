@@ -1,3 +1,5 @@
+package com.example.samms.json;
+
 
 
 import java.sql.Connection;
@@ -31,17 +33,17 @@ String url_tOracleConnection_1 = "jdbc:oracle:thin:@localhost:1521:XE";
 
 			while (resultadoCache.next()) {
 				String RECID = resultadoCache.getString("RECID");
-				String INDEXID = resultadoCache.getString("INDEXID");
-				String DESCRIPTION = resultadoCache.getString("DESCRIPTION");
-				String VALOR = resultadoCache.getString("VALOR");
+				String INSIDERNIN = resultadoCache.getString("INDEXID");
+				String COMPANYNIN = resultadoCache.getString("DESCRIPTION");
+				String INSIDERCLASSID = resultadoCache.getString("VALOR");
 				JSONObject obj=new JSONObject();
 				  obj.put("RECID",RECID);
-				  obj.put("INDEXID",INDEXID);
-				  obj.put("DESCRIPTION",DESCRIPTION);
-				  obj.put("VALOR",VALOR);
+				  obj.put("INTERMEDIARYID",INSIDERNIN);
+				  obj.put("PERSONNAME",COMPANYNIN);
+				  obj.put("NINTYPE",INSIDERCLASSID);
 				  list.put(obj);
 			}
-			System.out.print("{\n\"indices\":\n");
+			System.out.print("{\n\"intermediarios\":\n");
 			System.out.print(list+"\n");
 			System.out.print("}");
 			

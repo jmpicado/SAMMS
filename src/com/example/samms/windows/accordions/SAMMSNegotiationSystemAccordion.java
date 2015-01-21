@@ -14,14 +14,13 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.themes.Reindeer;
 
-public class SAMMSNegotiationSystemAccordion extends AbsoluteLayout{
+public class SAMMSNegotiationSystemAccordion extends SAMMSAccordion{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	Table table_Relaciones ;
 
 	public SAMMSNegotiationSystemAccordion() {
 		super();

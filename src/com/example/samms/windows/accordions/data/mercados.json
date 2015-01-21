@@ -1,0 +1,4 @@
+{
+"mercados":
+[{"CODIGO_MERCADO":"03","MERCADO":"XVAL"},{"CODIGO_MERCADO":"04","MERCADO":"XBAR"},{"CODIGO_MERCADO":"05","MERCADO":"XBIL"},{"CODIGO_MERCADO":"06","MERCADO":"XMAD"},{"CODIGO_MERCADO":"07","MERCADO":"MEFF Renta Variable"},{"CODIGO_MERCADO":"08","MERCADO":"MEFF Renta Fija"},{"CODIGO_MERCADO":"09","MERCADO":"AIAF Mercado Renta Fija"},{"CODIGO_MERCADO":"10","MERCADO":"XMCE"},{"CODIGO_MERCADO":"11","MERCADO":"MAB"},{"CODIGO_MERCADO":"12","MERCADO":"Mercado de Deuda Pública"},{"CODIGO_MERCADO":"13","MERCADO":"Mercado de Cítricos"},{"CODIGO_MERCADO":"14","MERCADO":"Mercado Latinoamericano de Valores"},{"CODIGO_MERCADO":"15","MERCADO":"ETF: Fondos Cotizados"},{"CODIGO_MERCADO":"16","MERCADO":"Mercados de Warrants y Certificados"},{"CODIGO_MERCADO":"18","MERCADO":"Mercado Electrónico de Renta Fija"},{"CODIGO_MERCADO":"20","MERCADO":"MFAO"},{"CODIGO_MERCADO":"19","MERCADO":"MARF"}]
+}

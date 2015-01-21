@@ -14,15 +14,14 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.themes.Reindeer;
 
-public class SAMMSMarketsAccordion extends AbsoluteLayout{
+public class SAMMSMarketsAccordion extends SAMMSAccordion{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	Table table_Relaciones ;
-
+	
 	public SAMMSMarketsAccordion() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -47,7 +46,7 @@ public class SAMMSMarketsAccordion extends AbsoluteLayout{
 	    // Creating a JSONObject from a String 
 	    JSONObject nodeRoot  = new JSONObject(sJSON); 
 	    // Creating a sub-JSONObject from another JSONObject
-	    JSONArray nodeArray = nodeRoot.getJSONArray("mercados");
+	    JSONArray nodeArray = nodeRoot.getJSONArray("markets");
 
 //	    // Getting the value of a attribute in a JSONObject
 //	    String sSDR = nodeStats.getString("sdr");

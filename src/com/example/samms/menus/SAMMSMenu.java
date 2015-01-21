@@ -49,8 +49,7 @@ public class SAMMSMenu implements Serializable{
 	AbsoluteLayout _mainLayout;
 	
 	public void createTreeContent(MenuBar barmenu, TabSheet tabsheet1, TabSheet tabsheet2, 
-			
-										AbsoluteLayout mainLayout ) {
+										TabSheet tabsheet3, AbsoluteLayout mainLayout ) {
 
 		_mainLayout = mainLayout;
 		// A feedback component
@@ -76,7 +75,8 @@ public class SAMMSMenu implements Serializable{
 				
 			}
 		};
-		        
+		MenuBar.Command mycommand5 = new SAMMSComand(tabsheet3,this);
+		
 		//Items on the Menu
 		MenuItem persons = barmenu.addItem("Persons", null, null);
 		// Submenu item with a sub-submenu
@@ -88,5 +88,12 @@ public class SAMMSMenu implements Serializable{
 		
 		MenuItem markets = barmenu.addItem("Markets", null, null);
 		MenuItem marketsSM = markets.addItem("General", null, mycommand4);
+		
+		MenuItem trades = barmenu.addItem("Trades", null, null);
+		MenuItem tradesSM = indexes.addItem("General", null, null);
+
+		MenuItem orderBook = barmenu.addItem("Orders Book", null, null);
+		MenuItem orderBookSM = orderBook.addItem("General", null, mycommand5);
+
 	}
 }
