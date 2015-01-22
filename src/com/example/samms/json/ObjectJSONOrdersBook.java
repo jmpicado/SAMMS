@@ -1,5 +1,3 @@
-package com.example.samms.json;
-
 
 
 import java.sql.Connection;
@@ -10,7 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-public class ObjectJSON2 {
+public class ObjectJSONOrdersBook {
 
 	public static void main( String [] args ) throws Exception  {
 String url_tOracleConnection_1 = "jdbc:oracle:thin:@localhost:1521:XE";
@@ -22,7 +20,7 @@ String url_tOracleConnection_1 = "jdbc:oracle:thin:@localhost:1521:XE";
 					"jmpicado"
 					);
 		String sentenciaCache = 
-				"select * from t_intermediary where ROWNUM <=100";
+				"select * from T_ORDERBOOK  where INSTRUMENTID = 'ES0682045929'";
 
 			PreparedStatement selectCache = conexion.prepareStatement(sentenciaCache);
 			//Ejecutamos la query
@@ -32,18 +30,22 @@ String url_tOracleConnection_1 = "jdbc:oracle:thin:@localhost:1521:XE";
 			JSONArray list = new JSONArray();
 
 			while (resultadoCache.next()) {
-				String RECID = resultadoCache.getString("RECID");
-				String INSIDERNIN = resultadoCache.getString("INTERMEDIARYID");
-				String COMPANYNIN = resultadoCache.getString("PERSONNAME");
-				String INSIDERCLASSID = resultadoCache.getString("NINTYPE");
+				String INSTRUMENTID = resultadoCache.getString("INSTRUMENTID");
+				String MARKETID = resultadoCache.getString("MARKETID");
+				String PRICE = resultadoCache.getString("PRICE");
+				String QTY = resultadoCache.getString("QTY");
+				String INTERMEDIARYID = resultadoCache.getString("INTERMEDIARYID");
+				String SIDE = resultadoCache.getString("SIDE");
 				JSONObject obj=new JSONObject();
-				  obj.put("RECID",RECID);
-				  obj.put("INTERMEDIARYID",INSIDERNIN);
-				  obj.put("PERSONNAME",COMPANYNIN);
-				  obj.put("NINTYPE",INSIDERCLASSID);
+				  obj.put("INSTRUMENTID",INSTRUMENTID);
+				  obj.put("MARKETID",MARKETID);
+				  obj.put("PRICE",PRICE);
+				  obj.put("QTY",QTY);
+				  obj.put("INTERMEDIARYID",INTERMEDIARYID);
+				  obj.put("SIDE",SIDE);
 				  list.put(obj);
 			}
-			System.out.print("{\n\"intermediarios\":\n");
+			System.out.print("{\n\"libro_ordenes\":\n");
 			System.out.print(list+"\n");
 			System.out.print("}");
 			

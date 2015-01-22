@@ -1,5 +1,3 @@
-package com.example.samms.json;
-
 
 
 import java.sql.Connection;
